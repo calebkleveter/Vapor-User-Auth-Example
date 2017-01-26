@@ -2,6 +2,8 @@ import Vapor
 import VaporPostgreSQL
 import Fluent
 import Auth
+import Turnstile
+import BCrypt
 
 final class User {
     var id: Node?
