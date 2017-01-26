@@ -1,6 +1,7 @@
 import Vapor
 import VaporPostgreSQL
 import Fluent
+import Auth
 
 final class User {
     var id: Node?
