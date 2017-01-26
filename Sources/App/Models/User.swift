@@ -72,5 +72,15 @@ extension User: Auth.User {
             throw Abort.custom(status: .forbidden, message: "Unsupported credential type: \(type).")
         }
     }
-    static func register(credentials: Credentials) throws -> Auth.User {}
+    static func register(credentials: Credentials) throws -> Auth.User {
+        let usernamePassword = credentials as? UsernamePassword
+        
+        guard let creds = usernamePassword else {
+            let type = type(of: credentials)
+            throw Abort.custom(status: .forbidden, message: "Unsupported credential type: \(type).")
+        }
+        
+        let user = User(username: creds.username, password: BCrypt.hash(password: creds.password))
+        return user
+    }
 }
