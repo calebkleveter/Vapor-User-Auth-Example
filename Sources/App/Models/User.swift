@@ -44,3 +44,5 @@ extension User: Preparation {
         try database.delete("users")
     }
 }
+
+extension User: Auth.User {}
