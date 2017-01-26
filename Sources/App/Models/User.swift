@@ -45,4 +45,7 @@ extension User: Preparation {
     }
 }
 
-extension User: Auth.User {}
+extension User: Auth.User {
+    static func authenticate(credentials: Credentials) throws -> Auth.User {}
+    static func register(credentials: Credentials) throws -> Auth.User {}
+}
